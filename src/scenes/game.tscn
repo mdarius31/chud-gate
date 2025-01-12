@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3eonas1wko6a"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_3wqs2"]
+[ext_resource type="PackedScene" uid="uid://hh12jpusai4t" path="res://scenes/player.tscn" id="2_cpnok"]
+[ext_resource type="Texture2D" uid="uid://y1mguiuyjd0y" path="res://icon.svg" id="3_er2ab"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6ycy"]
+size = Vector3(10, 1, 10)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_3wqs2")
+
+[node name="World" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="World" instance=ExtResource("2_cpnok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.30991, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631986, -3.17795)
+texture = ExtResource("3_er2ab")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+shape = SubResource("BoxShape3D_x6ycy")
+
+[node name="UserInterface" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
